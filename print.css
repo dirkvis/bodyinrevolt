@@ -5,8 +5,8 @@
 } 
 
 .loaded-content-container {
-	margin-left:-155px;
-	margin-top:-120px;
+	margin-left:-50px;
+	margin-top:-50px;
 	width:100%;
 	position:absolute;
 	padding:50px;
@@ -67,6 +67,6 @@
 
 .entry-meta, .entry-content-video, .entry-content-longtext-container, 
 .cat-links, .entry-content-quote-container, .social, .loaded-tags, 
-.entry-header-video, .entry-header, .entry-content {
+.entry-header-video, .entry-header, .entry-content, .post-dicht {
 	display:none !important;
 }

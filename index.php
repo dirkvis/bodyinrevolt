@@ -30,7 +30,16 @@ get_header(); ?>
 		
 			if(!isset($_GET['thetag']) && !isset($_GET['thecat'])){
 				get_template_part( 'featured-content' );
-			};
+			} else {
+				
+				if(!isset($_GET['thetag'])) {
+					?> 
+					<div class="catnaam"><?php echo $_GET['thecat']; ?></div> <?php
+				} else {
+					?>
+					<div class="tagnaam"> <?php echo $_GET['thetag']; ?> </div> <?php
+				}
+			}
 		?>
 		
 		<div id="normal-posts">
