@@ -57,7 +57,7 @@ echo $category[0]->cat_name;
 	</div>
 </div>
 	
-	    <div id="single-post-container-<?php the_ID(); ?>" class="single-post-container">
+	    <div id="single-post-container-<?php the_ID(); ?>" class="single-post-container single-post-container">
 		    
 		    	<?php	if(isset($_GET['id'])) {
 		    				include("single-loaded.php");

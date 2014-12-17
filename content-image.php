@@ -54,7 +54,7 @@ echo $category[0]->cat_name;
 </script>
 	
 		
-	<div class="entry-content-image" 
+	<div class="entry-content-image imgLiquid" 
 	
 	<?php 
 		if(has_tag("featured") || isset($_GET['id'])) {

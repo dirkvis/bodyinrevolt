@@ -1,24 +1,26 @@
 <?php
 /**
+ * The template for displaying posts in the Video post format
  *
  * @package WordPress
  * @subpackage Twenty_Fourteen
  * @since Twenty Fourteen 1.0
  */
-
 ?>
 
-	<div id="post-<?php the_ID(); ?>" class="entry-content entry-header-content hoofd-video">
+	<div id="post-<?php the_ID(); ?>" class="entry-content">
+
 	<header class="entry-header entry-header-video">
 		<?php if ( in_array( 'category', get_object_taxonomies( get_post_type() ) ) && twentyfourteen_categorized_blog() ) : ?>
-		<a class="post-link" rel="<?php the_ID(); ?>" href="<?php the_permalink(); ?>"><div class="entry-meta">
-			<p class="cat-links"><?php 
+		<div class="entry-meta">
+			<p class="cat-links cat-links-featured"><a class="post-link" rel="<?php the_ID(); ?>" href="<?php the_permalink(); ?>">
+			<?php 
 $category = get_the_category(); 
 if($category[0]){
 echo $category[0]->cat_name;
 }
-?></p>
-		</div></a><!-- .entry-meta -->
+?></a></p>
+		</div><!-- .entry-meta -->
 		<?php
 			endif;
 		?>
@@ -38,23 +40,22 @@ echo $category[0]->cat_name;
 		</div><!-- .entry-meta -->
 	</header><!-- .entry-header -->
 
-		
-	<div class="entry-content-video in-hoofd-video">
+		<div class="entry-content-video">
 		<?php
 			the_content( __( 'Continue reading <span class="meta-nav">&rarr;</span>', 'twentyfourteen' ) );
-			
+			wp_link_pages( array(
+				'before'      => '<div class="page-links"><span class="page-links-title">' . __( 'Pages:', 'twentyfourteen' ) . '</span>',
+				'after'       => '</div>',
+				'link_before' => '<span>',
+				'link_after'  => '</span>',
+			) );
 		?>
-		
-	</div>
-</div>
-	
-	    <div id="single-post-container-<?php the_ID(); ?>" class="single-post-container single-post-container">
-		    
-		    	<?php	if(isset($_GET['id'])) {
+		</div>
+	</div><!-- .entry-content -->
+
+	<?php //the_tags( '<footer class="entry-meta"><span class="tag-links">', '', '</span></footer>' ); ?>
+		    <div id="single-post-container-<?php the_ID(); ?>" class="single-post-container"><?php	if(isset($_GET['id'])) {
 		    				include("single-loaded.php");
 		    			}
 		    			?>
-
-		    
-	    </div>
-
+</div>

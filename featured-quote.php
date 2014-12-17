@@ -9,17 +9,17 @@
 ?>
 
 
-	<div id="post-<?php the_ID(); ?>" class="entry-content entry-header-content">
+	<a class="post-link" rel="<?php the_ID(); ?>" href="<?php the_permalink(); ?>"><div id="post-<?php the_ID(); ?>" class="entry-content entry-header-content">
 
 	<header class="entry-header entry-header-video">
 		<?php if ( in_array( 'category', get_object_taxonomies( get_post_type() ) ) && twentyfourteen_categorized_blog() ) : ?>
 		<div class="entry-meta">
-			<p class="cat-links"><a class="post-link" rel="<?php the_ID(); ?>" href="<?php the_permalink(); ?>"><?php 
+			<p class="cat-links cat-links-featured"><?php 
 $category = get_the_category(); 
 if($category[0]){
 echo $category[0]->cat_name;
 }
-?></a></p>
+?></p>
 		</div><!-- .entry-meta -->
 		<?php
 			endif;
@@ -42,64 +42,30 @@ echo $category[0]->cat_name;
 		<script type="text/javascript">
 </script>
 		<div class="entry-content-quote quote-header">
-		<table><td class="quote-centreren"><span class="quote-anim" id="quote-<?php the_ID(); ?>">
+		
+		
+		
+		
+		<div class="quote-anim-container"><div class="quote-anim" id="quote-<?php the_ID(); ?>">
 		<?php
-			the_content();
+		$content = get_the_content();
+		echo strip_tags($content);
 		?>
-</span></td></table>
+	
+		</div></div>
+
 		
 		
 		
-		<script type="text/javascript">
+				
 		
-		//oude code, voor het effect van woord voor woord. dit wordt de code voor in de header, alleen het gedeelte vanaf var oplaadtijd moet nog herschreven
-		
-		/*$('.quote-anim').each(function(){
-			var text = $(this).text().split(' ');
-
-			for( var i = 0, len = text.length; i < len; i++ ) {
-				text[i] = '<span class="word-' + i + '">' + text[i] + '</span>';
-			}
-			
-			$(this).html(text.join(' '));
-
-		});*/
-
-
-/*$('#quote-<?php the_ID(); ?>').each(function(){
-var text = $(this).text().split(' ');
-
-       for( var i = 0, len = text.length; i < len; i++ ) {
-           text[i] = '<span class="word-' + i + '">' + text[i] + '</span>';
-           
-       }
-       $(this).html(text.join(' '));
-
-  });
-
-var oplaadtijd<?php the_ID(); ?> = 1;
-
-function fadeInOut<?php the_ID(); ?> () {
-	oplaadtijd<?php the_ID(); ?> = 1;
-    $("#quote-<?php the_ID(); ?> span").each(function(i) {
-        oplaadtijd<?php the_ID(); ?>++;
-        $(this).delay(i*1200).fadeIn(500).fadeOut(500);
-    });
-    setTimeout(fadeInOut<?php the_ID(); ?>, oplaadtijd<?php the_ID(); ?>*1200);
-}
-
-fadeInOut<?php the_ID(); ?>();*/
-
-		</script>
-		
-		<style type="text/css">
-			#quote-<?php the_ID(); ?> span {
-				display:none;
-			}
-		</style>
 		</div> <!-- .entry-content-quote -->
-	</div><!-- .entry-content -->
+	</div></a><!-- .entry-content -->
 	
 	<?php //the_tags( '<footer class="entry-meta"><span class="tag-links">', '', '</span></footer>' ); ?>
 	
-		    <div id="single-post-container-<?php the_ID(); ?>" class="single-post-container"></div>
+		    <div id="single-post-container-<?php the_ID(); ?>" class="single-post-container"><?php	if(isset($_GET['id'])) {
+		    				include("single-loaded.php");
+		    			}
+		    			?>
+</div>

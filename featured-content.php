@@ -18,18 +18,29 @@
 		 
 		 //checken of ik via in infiinte scroll hier kom
 		 
-		 if (isset($_GET['id'])){
+		 if (isset($_GET['id']) || $GLOBALS["nieuwe-bezoeker"] == 1){
 		
 			 global $post;
 			 
-			$post = get_post($_GET['id']);
+			 if ($GLOBALS["nieuwe-bezoeker"] == 1 ) {
+				 $post = get_post(2); //welkomstpagina
+			 } else {			 
+				 $post = get_post($_GET['id']);
+			}
 			
 			setup_postdata( $post );
 			?>
 			<div class="entry-container-featured">
 			<?php
-			
-		    get_template_part( 'featured', get_post_format() );
+						//echo "aaaa";
+						$lkjl = get_post_format();
+						if (!$lkjl || $GLOBALS["nieuwe-bezoeker"] == 1) {
+							//echo "page" ;
+							get_template_part( 'featured', 'page' );
+						} else {
+							get_template_part( 'featured', get_post_format() );							
+						}
+
 		    
 		    ?>
 			</div>

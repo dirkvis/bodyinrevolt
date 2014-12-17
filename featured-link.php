@@ -8,11 +8,11 @@
 
 ?>
 
-	<div id="post-<?php the_ID(); ?>" class="entry-content entry-header-content">
+	<div id="post-<?php the_ID(); ?>" class="entry-content">
 	<header class="entry-header entry-header-video">
 		<?php if ( in_array( 'category', get_object_taxonomies( get_post_type() ) ) && twentyfourteen_categorized_blog() ) : ?>
 		<a class="post-link" rel="<?php the_ID(); ?>" href="<?php the_permalink(); ?>"><div class="entry-meta">
-			<p class="cat-links cat-links-featured"><?php 
+			<p class="cat-links"><?php 
 $category = get_the_category(); 
 if($category[0]){
 echo $category[0]->cat_name;
@@ -39,7 +39,7 @@ echo $category[0]->cat_name;
 	</header><!-- .entry-header -->
 
 		
-	<div class="entry-content-image entry-header-image" 
+	<div class="entry-content-image imgLiquid" 
 	
 	<?php 
 		if(has_tag("featured") || isset($_GET['id'])) {
@@ -49,15 +49,39 @@ echo $category[0]->cat_name;
 		}
 	
 	?>>
-		<?php
-			the_content( __( 'Continue reading <span class="meta-nav">&rarr;</span>', 'twentyfourteen' ) );
-			
-		?>
+		<?php $vimeoid = get_post_meta( get_the_ID(), 'vimeo-id', true ); ?>
+		<img id="vimeo-<?php echo $vimeoid; ?>" src="" alt="" />
+		
+		
+		
+		<script type="text/javascript">
+		
+		function vimeoLoadingThumb(id){    
+    var url = "http://vimeo.com/api/v2/video/" + id + ".json?callback=showThumb";
+      
+    var id_img = "#vimeo-" + id;
+    var script = document.createElement( 'script' );
+    script.type = 'text/javascript';
+    script.src = url;
+
+    $(id_img).before(script);
+}
+
+function showThumb(data){
+    var id_img = "#vimeo-" + data[0].id;
+    $(id_img).attr('src',data[0].thumbnail_large);
+}
+
+$(function() {
+    vimeoLoadingThumb(<?php echo $vimeoid; ?>);
+});
+		
+		</script>
 		
 	</div>
 </div>
 	
-	    <div id="single-post-container-<?php the_ID(); ?>" class="single-post-container">
+	    <div id="single-post-container-<?php the_ID(); ?>" class="single-post-container single-post-container">
 		    
 		    	<?php	if(isset($_GET['id'])) {
 		    				include("single-loaded.php");

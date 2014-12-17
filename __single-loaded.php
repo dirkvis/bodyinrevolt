@@ -12,6 +12,7 @@
 }
 
 .social {
+	border:2px solid white;
 	height:80px;
 	width:80px;
 	top:-100px;
@@ -24,13 +25,12 @@
 }
 
 .social:hover {
-	cursor:pointer;
+	background:white;
+	color:black;
 }
 
 
-
 </style>
-
 
 <?php
 function curPageURL() {
@@ -53,16 +53,14 @@ function curPageURL() {
         window.open('http://www.facebook.com/sharer.php?s=100&p[title]=' + title + '&p[summary]=' + descr + '&p[url]=' + url + '&p[images][0]=' + image, 'sharer', 'top=' + winTop + ',left=' + winLeft + ',toolbar=0,status=0,width=' + winWidth + ',height=' + winHeight);
     }
 </script>
-
+ 
+ 
 	<div class="loaded-content-container">
+<a href="mailto:?subject=I wanted you to see this site&amp;body=Check out this site <?php echo curPageURL(); ?>"><div class="social">M</div></a>
 
-<div class="social" onClick="window.print()"><img src="<?php echo get_stylesheet_directory_uri(); ?>/images/print.jpg" onmouseover="this.src='<?php echo get_stylesheet_directory_uri(); ?>/images/print-hover.jpg'" onmouseout="this.src='<?php echo get_stylesheet_directory_uri(); ?>/images/print.jpg'" width="80px"></div>
+<a href="javascript:fbShare('<?php echo curPageURL(); ?>', 'Fb Share', 'Facebook share popup', 'http://goo.gl/dS52U', 520, 350)"><div class="social">F</div></a>
 
-<a href="mailto:?subject=I wanted you to see this site&amp;body=Check out this site <?php echo curPageURL(); ?>"><div class="social"><img src="<?php echo get_stylesheet_directory_uri(); ?>/images/mail.png" onmouseover="this.src='<?php echo get_stylesheet_directory_uri(); ?>/images/mail-hover.png'" onmouseout="this.src='<?php echo get_stylesheet_directory_uri(); ?>/images/mail.png'" width="80px"></div></a>
-
-<a href="javascript:fbShare('<?php echo curPageURL(); ?>', 'Fb Share', 'Facebook share popup', 'http://goo.gl/dS52U', 520, 350)"><div class="social"><img src="<?php echo get_stylesheet_directory_uri(); ?>/images/facebook.png" onmouseover="this.src='<?php echo get_stylesheet_directory_uri(); ?>/images/facebook-hover.png'" onmouseout="this.src='<?php echo get_stylesheet_directory_uri(); ?>/images/facebook.png'" width="80px"></img></div></a>
-
-<a class="twitter popup" href="http://twitter.com/share"><div class="twitter-share-button social"><img src="<?php echo get_stylesheet_directory_uri(); ?>/images/twitter.png" onmouseover="this.src='<?php echo get_stylesheet_directory_uri(); ?>/images/twitter-hover.png'" onmouseout="this.src='<?php echo get_stylesheet_directory_uri(); ?>/images/twitter.png'" width="80px"></img></div></a>
+<a class="twitter popup" href="http://twitter.com/share"><div class="twitter-share-button social">T</div></a>
 
 <script>
   $('.popup').click(function(event) {
@@ -112,8 +110,7 @@ if($categories){
 echo trim($output, $separator);
 }
 ?></p>
-
 				</div>
-          
+                
 	</div>
 	
