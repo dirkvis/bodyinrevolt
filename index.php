@@ -22,7 +22,7 @@ get_header(); ?>
 
 
 		<?php
-			if(!isset($_GET['thetag']) && !isset($_GET['thecat']) && !isset($_GET['id'])) {
+			if(!isset($_GET['thetag']) && !isset($_GET['thecat']) && !isset($_GET['id']) && !isset($_COOKIE['nieuwebezoeker'])) {
 				$GLOBALS["nieuwe-bezoeker"]  = 1; //hier straks aangeven of iemand nieuw is
 			} else {
 				$GLOBALS["nieuwe-bezoeker"]  = 0;

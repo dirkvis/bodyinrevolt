@@ -1,3 +1,7 @@
+<?php 
+setcookie("nieuwebezoeker", "nl", time()+604800, "/"); 
+?> 
+
 <?php
 /**
  * The Header for our theme
@@ -130,7 +134,11 @@ $(this).children('.entry-content-quote').stop().animate({ fontSize : '14em', pad
 
          
 </script>
+
+
 </head>
+
+
 
 <body <?php body_class(); ?>>
 
